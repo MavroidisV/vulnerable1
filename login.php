@@ -39,6 +39,7 @@ error_reporting(E_ALL);
 			
 			//$data->bind_param('ss',$username,$password );
 			$data -> execute();
+			$data->bind_result($username1, $password);
 
 			//$result=mysqli_query($db,$data);
 			$row=$data->fetch();
