@@ -23,10 +23,10 @@ error_reporting(E_ALL);
 
 
 			//Check username and password from database
-			$data=$db->prepare=('SELECT userID FROM users WHERE username=:username and password=:password;');
+			$data=$db->prepare('SELECT userID FROM users WHERE username=:username and password=:password;');
 
-			$data->bind_param(':username',$username, PDO::PARAM_STR );
-			$data->bind_param(':password',$password, PDO::PARAM_STR );
+			$data->bind_param(':username',$username );
+			$data->bind_param(':password',$password );
 			
 			
 			
