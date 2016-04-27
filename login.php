@@ -19,7 +19,7 @@
 			//Check username and password from database
 			$sql="SELECT userID FROM users WHERE username= (:username) and password=(:password)";
 			$data=$mysqli -> prepare ($sql);
-			$data-> bindParam (':username :password',$username, $password);
+			$data-> bind_param(':username :password',$username, $password);
 			$data -> execute();
 			//$row=$data->fetch();
 			$result=mysqli_query($db,$data);
