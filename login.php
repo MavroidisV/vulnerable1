@@ -40,17 +40,17 @@ error_reporting(E_ALL);
 			//$data->bind_param('ss',$username,$password );
 			$data -> execute();
 
-			$result=mysqli_query($db,$data);
-			//$row=$data->fetch();
+			//$result=mysqli_query($db,$data);
+			$row=$data->fetch();
 			//$result=mysqli_query($db,$data);
 			//$row=mysqli_fetch_array($result,MYSQLI_ASSOC) ;
 			
 			//If username and password exist in our database then create a session.
 			//Otherwise echo error.
-			//if ($data->rowCount()==1)
-			if(mysqli_num_rows($result) == 1)
+			if ($data->rowCount()==1)
+			//if(mysqli_num_rows($result) == 1)
 			{
-				$_SESSION['username'] = $username; // Initializing Session
+				$_SESSION['username'] = $username1; // Initializing Session
 				header("location: photos.php"); // Redirecting To Other Page
 			}else
 			{
