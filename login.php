@@ -24,7 +24,7 @@ error_reporting(E_ALL);
 			
 			//Check username and password from database
 			$sql="SELECT userID FROM users WHERE username= (:username) and password=(:password)";
-			$data=$mysqli -> prepare ($sql);
+			$data=$db ->prepare($sql);
 			$data-> bind_param(':username :password',$username, $password);
 			$data -> execute();
 			//$row=$data->fetch();
