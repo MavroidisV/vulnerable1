@@ -21,14 +21,14 @@
 			$data=$mysqli -> prepare ($sql);
 			$data-> bindParam (':username',$username, ':password', $password);
 			$data -> execute();
-			$row=$data->fetch();
-			//$result=mysqli_query($db,$sql);
-			//$row=mysqli_fetch_array($result,MYSQLI_ASSOC) ;
+			//$row=$data->fetch();
+			$result=mysqli_query($db,$data);
+			$row=mysqli_fetch_array($result,MYSQLI_ASSOC) ;
 			
 			//If username and password exist in our database then create a session.
 			//Otherwise echo error.
 			
-			if(mysqli_num_rows($data) == 1)
+			if(mysqli_num_rows($result) == 1)
 			{
 				$_SESSION['username'] = $username; // Initializing Session
 				header("location: photos.php"); // Redirecting To Other Page
