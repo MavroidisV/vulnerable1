@@ -26,8 +26,8 @@ error_reporting(E_ALL);
 			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
 			{echo "fail";}
 	
-			$data->bind_param(1,$username1 );
-			$data->bind_param(2,$password );
+			$data->bind_param('s',$username1 );
+			$data->bind_param('s',$password );
 
 			
 			
