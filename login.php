@@ -26,7 +26,7 @@ error_reporting(E_ALL);
 			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
 			{echo "fail";}
 			
-			var_dump($data);
+			//var_dump($data);
 	
 			if(!$data->bind_param('ss',$username1,$password )) {
 				echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
@@ -38,7 +38,7 @@ error_reporting(E_ALL);
 			
 			//$data->bind_param('ss',$username,$password );
 			if (!$data -> execute()){
-				echo "Execute failed: (" . $data->errrno . ") " . $data->error;
+				echo "Execute failed: (" . $data->errno . ") " . $data->error;
 			}
 			//$data->bind_result($userID);
 
