@@ -21,11 +21,21 @@ error_reporting(E_ALL);
 			$password=$_POST['password'];
 
 
+
+			//Check username and password from database
+			$data=$db->prepare=('SELECT userID FROM users WHERE username=:username and password=:password;');
+
+			$data->bind_param(':username',$username, PDO::PARAM_STR );
+			$data->bind_param(':password',$password, PDO::PARAM_STR );
+			
+			
+			
+			
 			
 			//Check username and password from database
-			$data=$db->prepare=('SELECT userID FROM users WHERE username=? and password=?;');
+			//$data=$db->prepare=('SELECT userID FROM users WHERE username=? and password=?;');
 			
-			$data->bind_param('ss',$username,$password );
+			//$data->bind_param('ss',$username,$password );
 			$data -> execute();
 			//$row=$data->fetch();
 			$result=mysqli_query($db,$data);
