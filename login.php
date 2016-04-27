@@ -17,16 +17,16 @@ error_reporting(E_ALL);
 		}else
 		{
 			// Define $username and $password
-			$username=$_POST['username'];
+			$username1=$_POST['username'];
 			$password=$_POST['password'];
 
 
 
 			//Check username and password from database
-			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=(:username) and password=(:password);")))
+			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
 			{echo "fail";}
 	
-			$data->bind_param(1,$username );
+			$data->bind_param(1,$username1 );
 			$data->bind_param(2,$password );
 
 			
