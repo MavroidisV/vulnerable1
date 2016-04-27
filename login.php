@@ -23,10 +23,12 @@ error_reporting(E_ALL);
 
 
 			//Check username and password from database
-			$data=$db->prepare("SELECT userID FROM users WHERE username=(:username) and password=(:password);");
-
+			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=(:username) and password=(:password);")))
+			{echo "fail";}
+	
 			$data->bind_param(1,$username );
 			$data->bind_param(2,$password );
+
 			
 			
 			
