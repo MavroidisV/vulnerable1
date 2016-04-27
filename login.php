@@ -30,11 +30,6 @@ error_reporting(E_ALL);
 				echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
 			}
 			
-
-			
-			
-			
-			
 			
 			//Check username and password from database
 			//$data=$db->prepare=('SELECT userID FROM users WHERE username=? and password=?;');
