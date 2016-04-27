@@ -26,7 +26,9 @@ error_reporting(E_ALL);
 			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
 			{echo "fail";}
 	
-			$data->bind_param('ss',$username1,$password );
+			if(!$data->bind_param('ss',$username1,$password )) {
+				echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+			}
 			
 
 			
@@ -38,8 +40,10 @@ error_reporting(E_ALL);
 			//$data=$db->prepare=('SELECT userID FROM users WHERE username=? and password=?;');
 			
 			//$data->bind_param('ss',$username,$password );
-			$data -> execute();
-			$data->bind_result($userID);
+			if (!$data -> execute()){
+				echo "Execute failed: (" . $data->errrno . ") " . $data->error;
+			}
+			//$data->bind_result($userID);
 
 			//$result=mysqli_query($db,$data);
 			$row=$data->fetch();
@@ -48,8 +52,8 @@ error_reporting(E_ALL);
 			
 			//If username and password exist in our database then create a session.
 			//Otherwise echo error.
-			//if ($data->rowCount()==1)
-			if(mysqli_num_rows($row) == 1)
+			if ($data->rowCount()==1)
+			//if(mysqli_num_rows($row) == 1)
 			{
 				$_SESSION['username'] = $username1; // Initializing Session
 				header("location: photos.php"); // Redirecting To Other Page
