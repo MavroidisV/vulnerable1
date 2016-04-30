@@ -38,7 +38,7 @@ if(isset($_POST["submit"]))
    // $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
   //  if(mysqli_num_rows($result) == 1) {
 
-    if ($data->num_rows >= "1")
+    if ($data->num_rows == "1")
     {
         /* Bind the result to variables */
         $data->bind_result($id);
