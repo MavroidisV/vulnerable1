@@ -33,8 +33,6 @@
             
             /* Bind results to variables */
             $data->bind_result($photoID, $title, $description, $postDate, $url, $userID);
-
-
             //if ($data->num_rows = "1")
            // {
                 /* Bind the result to variables */
@@ -65,12 +63,42 @@
                // echo " <p>".$row['description']."</p>";
 
 
-                $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
-                $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
-                if(mysqli_num_rows($commentresult)>1) {
+
+
+    //Check username from db
+    if (!($data=$db->prepare("SELECT * FROM comments WHERE photoID=?;")))
+    {echo "fail";}
+
+    if(!$data->bind_param('s',$photoID)) {
+        echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+    }
+
+    if (!$data -> execute()){
+        echo "Execute failed: (" . $data->errno . ") " . $data->error;
+    }
+
+    //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+
+    /* Bind results to variables */
+    $data->bind_result($commentID, $description, $postDate, $url, $photoID);
+    if ($data->num_rows > "1"){
+    // {
+    /* Bind the result to variables */
+    //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
+
+    /* fetch values */
+    while ($data->fetch()) {
+
+
+
+
+
+                //$commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
+               // $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
+              //  if(mysqli_num_rows($commentresult)>1) {
 
                     echo "<h2> Comments </h2>";
-                    while($commentRow = mysqli_fetch_assoc($commentresult)){
+                   // while($commentRow = mysqli_fetch_assoc($commentresult)){
                         echo "<div class = 'comments'>";
                         echo "<h3>".$commentRow['postDate']."</h3>";
                         echo "<p>".$commentRow['description']."</p>";
