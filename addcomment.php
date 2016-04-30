@@ -58,11 +58,6 @@ echo "ok upto now";
     $data->bind_param("ss", $desc, $photoID);
     $data->execute();
     // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-    if ($data) {
-        $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
-    } else {
-        $msg = "You need to login first";
-    }
-
+    
 }
 ?>
