@@ -31,25 +31,29 @@
 
             $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
 
-            if ($data->num_rows = "1")
-            {
+            //if ($data->num_rows = "1")
+           // {
                 /* Bind the result to variables */
                 //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
-                printf("Number of rows: %d.\n", $data->num_rows);
 
-                /* free result */
-                $data->free_result();
+            /* fetch values */
+            while ($data->fetch()) {
+                printf("%s %s\n", $lastName, $firstName);
+            }
 
-                $row=$data->fetch();
+            /* Close the statement */
+            $data->close();
+
+                //$row=$data->fetch();
 
                 //$photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
            // $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
            // if(mysqli_num_rows($photoresult)==1){
                 //$photoRow = mysqli_fetch_assoc($photoresult);
-                echo "<h1>".$row['title']."</h1>";
-                echo "<h3>".$row['postDate']."</h3>";
-                echo "<img src='".$row['url']."'/>";
-                echo " <p>".$row['description']."</p>";
+               // echo "<h1>".$row['title']."</h1>";
+               // echo "<h3>".$row['postDate']."</h3>";
+               // echo "<img src='".$row['url']."'/>";
+               // echo " <p>".$row['description']."</p>";
 
 
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
@@ -72,11 +76,11 @@
                 }
 
             }
-            else{
-                echo "<h1>No Photos Found</h1>";
-            }
+          //  else{
+              //  echo "<h1>No Photos Found</h1>";
+           // }
 
-       }
+      // }
     else{
 
         echo "<h1>No User Selected</h1>";
