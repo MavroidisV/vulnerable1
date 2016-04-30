@@ -20,6 +20,7 @@ if(isset($_POST["submit"]))
 
     $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
     $row=$data->fetch();
+    echo $row;
 
     //$sql="SELECT userID FROM users WHERE username='$name'";
     //$result=mysqli_query($db,$sql);
