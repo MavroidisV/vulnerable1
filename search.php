@@ -4,10 +4,27 @@ if(isset($_POST["submit"]))
 {
     $name = $_POST["username"];
 
-    $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) == 1)
+
+    //Check username and password from database
+    if (!($data=$db->prepare("SELECT userID FROM users WHERE username=?;")))
+    {echo "fail";}
+
+    if(!$data->bind_param('s',$username)) {
+        echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+    }
+
+
+    if (!$data -> execute()){
+        echo "Execute failed: (" . $data->errno . ") " . $data->error;
+    }
+
+    $row=$data->fetch();
+
+    //$sql="SELECT userID FROM users WHERE username='$name'";
+    //$result=mysqli_query($db,$sql);
+    //$row=mysqli_fetch_assoc($result);
+    //if(mysqli_num_rows($result) == 1)
+    if ($data->num_rows >= "1")
     {
         $searchID = $row['userID'];
         $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
