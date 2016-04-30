@@ -39,7 +39,7 @@ if(isset($_POST["submit"])) {
     //  if(mysqli_num_rows($result) == 1) {
     $row = $data->fetch();
     //if ($data->num_rows == "1")
-    {
+    
         /* Bind the result to variables */
         // $data->bind_result($id);
 
@@ -48,15 +48,16 @@ if(isset($_POST["submit"])) {
         // $id = $row['userID'];
         
         echo $desc;
-        
-        
-            $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)") or die(mysqli_error($db));
-            $query->bind_param("ss", $desc, $photoID);
-            $query->execute();
-            if ($query) {
-                $msg = "Thank You! you have submitted your comment succesfully";
-            }
 
+        $addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
+        $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        if ($query) {
+            $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
         }
+    
+else{
+        $msg = "You need to login first";
+    }
 }
-    ?>
+
+?>
