@@ -6,6 +6,24 @@ if(isset($_POST["submit"]))
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    // To protect from MySQL injection and XSS
+    $name = stripslashes($name);
+    $email = stripslashes($email);
+    $password = stripslashes($password);
+
+    $name = mysqli_real_escape_string($db, $name);
+    $email = mysqli_real_escape_string($db, $email);
+    $password = mysqli_real_escape_string($db, $password);
+
+
+    $name = htmlspecialchars($name);
+    $password = htmlspecialchars($password);
+    $email = htmlspecialchars($email);
+
+
+    $password = md5($password);
+
+
 
 
     $sql="SELECT email FROM users WHERE email='$email'";
