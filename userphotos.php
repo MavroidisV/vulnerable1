@@ -42,7 +42,7 @@ if(isset($_SESSION['username']))
 
         $row=$data->fetch();
 
-        //$searchID = $row['userID'];
+
         $searchSql="SELECT title, photoID,url FROM photos WHERE userID='$searchID'";
         $searchresult=mysqli_query($db,$searchSql);
 
