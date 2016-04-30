@@ -43,7 +43,7 @@ if(isset($_POST["submit"])) {
             echo "Execute failed: (" . $data1->errno . ") " . $data1->error;
         }
 
-        $data1->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+       // $data1->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
 
 
         if ($data1->num_rows > "0") {
@@ -54,7 +54,7 @@ if(isset($_POST["submit"])) {
 
             $searchRow = $data1->fetch();
             
-            echo $data1;
+            
 
 
             //$searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
