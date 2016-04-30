@@ -38,7 +38,7 @@
                 printf("Number of rows: %d.\n", $data->num_rows);
 
                 /* free result */
-                $stmt->free_result();
+                $data->free_result();
 
                 $row=$data->fetch();
 
