@@ -1,4 +1,5 @@
 <?php
+
 //display error
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -44,24 +45,24 @@ if(isset($_POST["submit"])) {
     //  if(mysqli_num_rows($result) == 1) {
     $row = $data->fetch();
     //if ($data->num_rows == "1")
-    {
-        /* Bind the result to variables */
-        // $data->bind_result($id);
 
-        //$row=$data->fetch();
-        //echo $name." ".$email." ".$password;
-        // $id = $row['userID'];
+    /* Bind the result to variables */
+    // $data->bind_result($id);
 
-        if ($data->num_rows >= "1"){
-        $data = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
-        $data->bind_param("ss",$desc,$photoID);
-        $data->execute();
-        // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-            
-            $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
-        } else {
-            $msg = "You need to login first";
-        }
+    //$row=$data->fetch();
+    //echo $name." ".$email." ".$password;
+    // $id = $row['userID'];
+
+
+    $data = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)") or die(mysqli_error($db));
+    $data->bind_param("ss", $desc, $photoID);
+    $data->execute();
+    // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+    if ($data) {
+        $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
+    } else {
+        $msg = "You need to login first";
     }
+
 }
 ?>
