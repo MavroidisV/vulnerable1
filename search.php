@@ -9,7 +9,7 @@ if(isset($_POST["submit"]))
     if (!($data=$db->prepare("SELECT userID FROM users WHERE username=?;")))
     {echo "fail";}
 
-    if(!$data->bind_param('s',$username)) {
+    if(!$data->bind_param('s',$name)) {
         echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
     }
 
