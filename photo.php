@@ -65,7 +65,7 @@
 
     /* Bind results to variables */
     $data->bind_result($commentID, $description, $postDate, $userID, $photoID);
-    if ($data->num_rows >= "1"){
+   // if ($data->num_rows >= "1"){
     // {
     /* Bind the result to variables */
     //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
@@ -98,7 +98,7 @@
                     echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
                 }
 
-            }
+           // }
           //  else{
               //  echo "<h1>No Photos Found</h1>";
            // }
