@@ -24,11 +24,23 @@ if(isset($_POST["submit"]))
     $password = md5($password);
 
 
+    if (!($data=$db->prepare("SELECT email FROM users WHERE email= ? ;")))
+    {echo "fail";}
+
+    if(!$data->bind_param('s',$email )) {
+        echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+    }
 
 
-    $sql="SELECT email FROM users WHERE email='$email'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+    if (!$data -> execute()){
+        echo "Execute failed: (" . $data->errno . ") " . $data->error;
+    }
+
+    $row=$data->fetch();
+
+   // $sql="SELECT email FROM users WHERE email='$email'";
+   // $result=mysqli_query($db,$sql);
+    $row=mysqli_fetch_array($row,MYSQLI_ASSOC);
     if(mysqli_num_rows($result) == 1)
     {
         $msg = "Sorry...This email already exists...";
