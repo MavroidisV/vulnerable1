@@ -48,10 +48,11 @@ if(isset($_POST["submit"])) {
         // $id = $row['userID'];
 
 
-        $data = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)");
-        $data->bind_param("sss", $desc, $id, $photoID);
+        $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
+        $query->bind_param("ss",$desc,$photoID);
+        $query->execute();
         // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        $data->execute();
+
         if ($data) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
         } else {
