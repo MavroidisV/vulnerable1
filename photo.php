@@ -49,7 +49,6 @@
             }
 
             /* Close the statement */
-            $data->close();
 
                 //$row=$data->fetch();
 
@@ -81,7 +80,7 @@
 
     /* Bind results to variables */
     $data->bind_result($commentID, $description, $postDate, $url, $photoID);
-    if ($data->num_rows > "1"){
+    if ($data->num_rows >= "1"){
     // {
     /* Bind the result to variables */
     //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
@@ -100,8 +99,10 @@
                     echo "<h2> Comments </h2>";
                    // while($commentRow = mysqli_fetch_assoc($commentresult)){
                         echo "<div class = 'comments'>";
-                        echo "<h3>".$postDate['postDate']."</h3>";
-                        echo "<p>".$commentID['description']."</p>";
+                        echo "<h3>".$postDate."</h3>";
+                        echo "<p>".$commentID."</p>";
+                        echo "<p>".$description."</p>";
+        
                         echo "</div>";
                     }
 
