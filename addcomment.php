@@ -49,7 +49,7 @@ if(isset($_POST["submit"]))
 
 
         $data=$db->prepare( "INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)");
-        $data->bind_param("sss", $description, $id,$photoID);
+        $data->bind_param("sss", $desc, $id,$photoID);
        // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
         $data->execute();
         if ($data) {
