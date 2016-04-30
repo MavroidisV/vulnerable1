@@ -18,10 +18,9 @@ if(isset($_POST["submit"]))
         echo "Execute failed: (" . $data->errno . ") " . $data->error;
     }
 
-    $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+    //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
     $row=$data->fetch();
     echo $row;
-    echo $data;
 
     //$sql="SELECT userID FROM users WHERE username='$name'";
     //$result=mysqli_query($db,$sql);
