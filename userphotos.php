@@ -4,10 +4,29 @@ if(isset($_SESSION['username']))
 {
     $name = $_SESSION["username"];
 
-    $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) == 1)
+
+
+
+    //Check username from db
+    if (!($data=$db->prepare("SELECT userID FROM users WHERE username=?;")))
+    {echo "fail";}
+
+    if(!$data->bind_param('s',$name)) {
+        echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+    }
+
+
+    if (!$data -> execute()){
+        echo "Execute failed: (" . $data->errno . ") " . $data->error;
+    }
+
+    $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+
+
+
+    if ($data->num_rows >= "1")
+
+        
     {
         $searchID = $row['userID'];
         $searchSql="SELECT title, photoID,url FROM photos WHERE userID='$searchID'";
