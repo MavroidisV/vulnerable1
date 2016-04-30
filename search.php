@@ -20,7 +20,8 @@ if(isset($_POST["submit"]))
 
     $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
    // $row=$data->fetch();
-    echo $row;
+   // echo $row;
+    echo $data;
 
 ////////
 
