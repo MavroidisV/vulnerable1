@@ -36,13 +36,13 @@ if(isset($_POST["submit"]))
         echo "Execute failed: (" . $data->errno . ") " . $data->error;
     }
 
-    $row=$data->fetch();
+    $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it!
 
-   // $sql="SELECT email FROM users WHERE email='$email'";
-   // $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($row,MYSQLI_ASSOC);
-    if(mysqli_num_rows($result) == 1)
-    {
+    $row=$data->fetch();
+    
+
+    if ($data->num_rows >= "1") { //Uses the stored result and counts the rows.
+        
         $msg = "Sorry...This email already exists...";
     }
     else
