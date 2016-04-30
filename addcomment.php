@@ -52,7 +52,7 @@ if(isset($_POST["submit"])) {
     //$row=$data->fetch();
     //echo $name." ".$email." ".$password;
     // $id = $row['userID'];
-
+echo "ok upto now";
 
     $data = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)") or die(mysqli_error($db));
     $data->bind_param("ss", $desc, $photoID);
