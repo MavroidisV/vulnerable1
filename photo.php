@@ -71,6 +71,7 @@
     //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
 
     /* fetch values */
+            echo "<h2> Comments </h2>";
     while ($data->fetch()) {
 
 
