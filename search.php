@@ -19,7 +19,7 @@ if(isset($_POST["submit"]))
     }
 
     $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
-    $row=$data->fetch();
+   // $row=$data->fetch();
     echo $row;
     
 
@@ -28,10 +28,12 @@ if(isset($_POST["submit"]))
     
     if ($data->num_rows >= "1")
    {
-       $data->bind_result($userID);
+       $data->bind_result($id);
         //$searchID = $row['userID'];
+       $row=$data->fetch();
+
         
-        $searchSql="SELECT title, photoID FROM photos WHERE userID=''";
+        $searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
         $searchresult=mysqli_query($db,$searchSql);
 
         if(mysqli_num_rows($searchresult)>0){
