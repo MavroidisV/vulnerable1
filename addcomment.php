@@ -47,13 +47,12 @@ if(isset($_POST["submit"])) {
         //echo $name." ".$email." ".$password;
         // $id = $row['userID'];
 
-
+        if ($data->num_rows >= "1"){
         $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
         $query->bind_param("ss",$desc,$photoID);
         $query->execute();
         // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-
-        if ($query) {
+            
             $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
         } else {
             $msg = "You need to login first";
