@@ -46,9 +46,13 @@ if(isset($_POST["submit"]))
         $row=$data->fetch();
         //echo $name." ".$email." ".$password;
         $id = $row['userID'];
-        $addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
-        $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        if ($query) {
+
+
+        $data=$db->prepare( "INSERT INTO comments (description, postDate,photoID,userID) VALUES (?,now(),?,?)");
+        $data->bind_param("ssss", $description, $postDate,$photoID,$userID);
+       // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        $data->execute();
+        if ($data) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
         }
     }
