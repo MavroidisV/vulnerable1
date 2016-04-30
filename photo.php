@@ -99,11 +99,7 @@
                     echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
                 }
 
-           // }
-          else{
-                    echo "<h1>No Photos Found</h1>";
-           }
-
+         
       // }
                  
 
