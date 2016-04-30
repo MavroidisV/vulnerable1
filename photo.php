@@ -18,7 +18,7 @@
             $photoID = $_GET['id'];
 
             //Check username from db
-            if (!($data=$db->prepare("SELECT * FROM photos WHERE photoID=?;")))
+            if (!($data=$db->prepare("SELECT photoID, title, description, postDate, url, userID FROM photos WHERE photoID=?;")))
             {echo "fail";}
 
             if(!$data->bind_param('s',$photoID)) {
@@ -31,7 +31,7 @@
 
             $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
 
-            if ($data->num_rows == "1")
+            if ($data->num_rows >= "1")
             {
                 /* Bind the result to variables */
                 $data->bind_result($id);
