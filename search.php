@@ -28,59 +28,23 @@ if(isset($_POST["submit"])) {
         $row = $data->fetch();
 
 
-///////
+        $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
+        $searchresult=mysqli_query($db,$searchSql);
 
-        if (!($data1 = $db->prepare("SELECT title, photoID FROM photos WHERE userID=?;"))) {
-            echo "fail";
+        if(mysqli_num_rows($searchresult)>0){
+            while($searchRow = mysqli_fetch_assoc($searchresult)){
+                $line = "<p><a href='photo.php?id=".$searchRow['photoID']."'>".$searchRow['title']."</a></p>";
+                $resultText = $resultText.$line;
+            }
         }
-
-        if (!$data1->bind_param('s', $id)) {
-            echo "binding parameters failed: (" . $data1->errno . ")" . $data1->error;
+        else{
+            $resultText = "no photos by user";
         }
-
-
-        if (!$data1->execute()) {
-            echo "Execute failed: (" . $data1->errno . ") " . $data1->error;
-        }
-
-       $data1->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
-
-
-        if ($data1->num_rows > "0") {
-            
-            echo "alright up to here";
-
-            $data1->bind_result($title, $photoID);
-
-            $searchRow = $data1->fetch();
-            
-            
-            echo $searchRow;
-            
-            
-
-
-            //$searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
-            // $searchresult=mysqli_query($db,$searchSql);
-
-            //if(mysqli_num_rows($searchresult)>0){
-            // while($searchRow = mysqli_fetch_assoc($searchresult)){
-            $line = "<p><a href='photo.php?id=" . $searchRow['photoID'] . "'>" . $searchRow['title'] . "</a></p>";
-            $resultText = $resultText . $line;
-        }
-
     }
-
-    //else {
-       // $resultText = "no photos by user";
-
-
-     else
-
+    else
+    {
         $resultText = "no user with that username";
 
-        // }
-
-    //}
+    }
 }
 ?>
