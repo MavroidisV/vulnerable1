@@ -40,32 +40,17 @@
 
             /* fetch values */
             while ($data->fetch()) {
-               // printf("%s %s\n", $photoID, $url);
-                echo "<h1>".$title."</h1>";
-                echo "<h3>".$postDate."</h3>";
-                echo "<img src='".$url."'/>";
-                echo " <p>".$description."</p>";
+                // printf("%s %s\n", $photoID, $url);
+                echo "<h1>" . $title . "</h1>";
+                echo "<h3>" . $postDate . "</h3>";
+                echo "<img src='" . $url . "'/>";
+                echo " <p>" . $description . "</p>";
 
             }
-
-            /* Close the statement */
-
-                //$row=$data->fetch();
-
-                //$photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
-           // $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
-           // if(mysqli_num_rows($photoresult)==1){
-                //$photoRow = mysqli_fetch_assoc($photoresult);
-               // echo "<h1>".$row['title']."</h1>";
-               // echo "<h3>".$row['postDate']."</h3>";
-               // echo "<img src='".$row['url']."'/>";
-               // echo " <p>".$row['description']."</p>";
-
-
-
+            
 
     //Check username from db
-    if (!($data=$db->prepare("SELECT * FROM comments WHERE photoID=?;")))
+    if (!($data=$db->prepare("SELECT commentID,description,postDate,userID,photoID FROM comments WHERE photoID=?;")))
     {echo "fail";}
 
     if(!$data->bind_param('s',$photoID)) {
@@ -79,7 +64,7 @@
     //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
 
     /* Bind results to variables */
-    $data->bind_result($commentID, $description, $postDate, $url, $photoID);
+    $data->bind_result($commentID, $description, $postDate, $userID, $photoID);
     if ($data->num_rows >= "1"){
     // {
     /* Bind the result to variables */
