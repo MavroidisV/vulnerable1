@@ -34,18 +34,21 @@
             if ($data->num_rows >= "1")
             {
                 /* Bind the result to variables */
-                $data->bind_result($id,$title,$description,$postDate,$url,$userID);
+               // $data->bind_result($id,$title,$description,$postDate,$url,$userID);
 
-                $row=$data->fetch();
+                //$row=$data->fetch();
+                while (mysqli_stmt_fetch($data)) {
+                    printf ("%s %s %s %s <br>", $id, $title, $description, $postDate,$url,$userID);
+                }
 
                 //$photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
            // $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
            // if(mysqli_num_rows($photoresult)==1){
                 //$photoRow = mysqli_fetch_assoc($photoresult);
-                echo "<h1>".$row['title']."</h1>";
-                echo "<h3>".$row['postDate']."</h3>";
-                echo "<img src='".$row['url']."'/>";
-                echo " <p>".$row['description']."</p>";
+                //echo "<h1>".$row['title']."</h1>";
+               // echo "<h3>".$row['postDate']."</h3>";
+               // echo "<img src='".$row['url']."'/>";
+               // echo " <p>".$row['description']."</p>";
 
 
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
@@ -72,7 +75,7 @@
                 echo "<h1>No Photos Found</h1>";
             }
 
-        }
+       }
     else{
 
         echo "<h1>No User Selected</h1>";
