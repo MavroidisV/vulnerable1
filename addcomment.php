@@ -46,6 +46,8 @@ if(isset($_POST["submit"])) {
         //$row=$data->fetch();
         //echo $name." ".$email." ".$password;
         // $id = $row['userID'];
+        
+        echo $desc;
 
 
         $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)") or die(mysqli_error($db));
