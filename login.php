@@ -21,6 +21,18 @@ error_reporting(E_ALL);
 			$password=$_POST['password'];
 
 
+			// To protect from MySQL injection and XSS
+			$username1 = stripslashes($username1);
+			$password = stripslashes($password);
+			$username1 = mysqli_real_escape_string($db, $username1);
+			$password = mysqli_real_escape_string($db, $password);
+			$username1 = htmlspecialchars($username1);
+			$password = htmlspecialchars($password);
+
+			$password = md5($password);
+			
+
+
 
 			//Check username and password from database
 			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
