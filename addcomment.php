@@ -48,8 +48,8 @@ if(isset($_POST["submit"]))
         $id = $row['userID'];
 
 
-        $data=$db->prepare( "INSERT INTO comments (description, postDate,userID,photoID) VALUES (?,now(),?,?)");
-        $data->bind_param("ssss", $description, now(),$id,$photoID);
+        $data=$db->prepare( "INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)");
+        $data->bind_param("sss", $description, $id,$photoID);
        // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
         $data->execute();
         if ($data) {
