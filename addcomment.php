@@ -1,7 +1,4 @@
 <?php
-
-
-
 session_start();
 include("connection.php"); //Establishing connection with our database
 
@@ -50,12 +47,13 @@ if(isset($_POST["submit"])) {
         //echo $name." ".$email." ".$password;
         // $id = $row['userID'];
 
-        if ($data->num_rows >= "1"){
-        $data = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
-        $data->bind_param("ss",$desc,$photoID);
-        $data->execute();
+
+        $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)")or die(mysqli_error($db));
+        $query->bind_param("sss",$desc,$id,$photoID);
+        $query->execute();
         // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-            
+
+        if ($data) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
         } else {
             $msg = "You need to login first";
