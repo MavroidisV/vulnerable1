@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 include("connection.php"); //Establishing connection with our database
 
 $msg = ""; //Variable for storing our errors.
@@ -48,14 +48,8 @@ if(isset($_POST["submit"])) {
         // $id = $row['userID'];
         
         echo $desc;
-
-
-        $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)") or die(mysqli_error($db));
-        if ($data->num_rows < "1") { //Uses the stored result and counts the rows.
-
-            $msg = "Sorry...This email already exists...";
-        } else {
-            //echo $name." ".$email." ".$password;
+        
+        
             $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)") or die(mysqli_error($db));
             $query->bind_param("ss", $desc, $photoID);
             $query->execute();
@@ -64,6 +58,5 @@ if(isset($_POST["submit"])) {
             }
 
         }
-    }
 }
     ?>
