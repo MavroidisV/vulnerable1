@@ -40,27 +40,25 @@ if(isset($_POST["submit"])) {
     $data->bind_result($id);
     $row = $data->fetch();
     //if ($data->num_rows == "1")
-    
-        /* Bind the result to variables */
-        // $data->bind_result($id);
 
-        //$row=$data->fetch();
-        //echo $name." ".$email." ".$password;
-        // $id = $row['userID'];
-        
-        echo $desc;
+    /* Bind the result to variables */
+    // $data->bind_result($id);
 
+    //$row=$data->fetch();
+    //echo $name." ".$email." ".$password;
+    // $id = $row['userID'];
+
+    echo $desc;
 
 
     $addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
     $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
     if ($query) {
-        $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
+        $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
+
+    } else {
+        $msg = "You need to login first";
     }
 }
-else{
-    $msg = "You need to login first";
-}
-
 
 ?>  
