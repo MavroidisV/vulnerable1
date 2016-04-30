@@ -53,7 +53,7 @@ if(isset($_POST["submit"])) {
         $query->execute();
         // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
 
-        if ($data) {
+        if ($query) {
             $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
         } else {
             $msg = "You need to login first";
