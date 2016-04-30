@@ -52,8 +52,8 @@ if(isset($_POST["submit"])) {
 
 
 
-    $query = $db->prepare("INSERT INTO comments (description, postDate, photoID, userID) VALUES (?,?,?,?)")or die(mysqli_error($db));
-    $query->bind_param("ssss",$desc,now(),$photoID,$id);
+    $query = $db->prepare("INSERT INTO comments (description, postDate, photoID, userID) VALUES (?,?,?)")or die(mysqli_error($db));
+    $query->bind_param("sss",$desc,$photoID,$id);
     $query->execute();
     if($query)
     {
