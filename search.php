@@ -23,30 +23,13 @@ if(isset($_POST["submit"]))
     echo $row;
     
 
-////////
 
-   // if ($stmt->num_rows >= "1") { //Uses the stored result and counts the rows.
 
-       // while($data = $result->fetch_assoc()){
-            //And here, the answer-object is turned into an array-(object)
-            // which can be worked with nicely.
-            //It loops trough all entries in the array.
-     //   }
-
-   // }else{
-
-      //  echo "0 records found";
-   // }
-
-////////
-
-    //$sql="SELECT userID FROM users WHERE username='$name'";
-    //$result=mysqli_query($db,$sql);
-    //$row=mysqli_fetch_assoc($result);
-    //if(mysqli_num_rows($result) == 1)
-    if ($data->num_rows >= "1") echo "workds fine";}
-  /*  {
-        $searchID = $row['userID'];
+    
+    if ($data->num_rows >= "1")
+   {
+       $data->bind_result($userID);
+        //$searchID = $row['userID'];
         
         $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
         $searchresult=mysqli_query($db,$searchSql);
