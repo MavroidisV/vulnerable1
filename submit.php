@@ -49,7 +49,7 @@ if(isset($_POST["submit"]))
     {
         //echo $name." ".$email." ".$password;
         $query = $db->prepare("INSERT INTO users (username, email, password) VALUES (?,?,?)")or die(mysqli_error($db));
-        $query->bind_param("sss",$username,$email,$password);
+        $query->bind_param("sss",$name,$email,$password);
         $query->execute();
         if($query)
         {
