@@ -50,7 +50,7 @@ if(isset($_POST["submit"])) {
             
             echo "alright up to here";
 
-            $data1->bind_result($id);
+            $data1->bind_result($title, $photoID);
 
             $searchRow = $data1->fetch();
 
