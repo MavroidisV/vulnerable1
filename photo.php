@@ -34,7 +34,7 @@
             if ($data->num_rows >= "1")
             {
                 /* Bind the result to variables */
-                $data->bind_result($id,$title,$description,$postDate,$url,$userID);
+                $data->bind_result($row['id'],$row['title'],$row['description'],$row['postDate'],$row['url'],$row['userID']);
 
                 $row=$data->fetch();
 
@@ -42,7 +42,6 @@
            // $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
            // if(mysqli_num_rows($photoresult)==1){
                 //$photoRow = mysqli_fetch_assoc($photoresult);
-                echo "<h1>" .$row [$title];
                 echo "<h1>".$row['title']."</h1>";
                 echo "<h3>".$row['postDate']."</h3>";
                 echo "<img src='".$row['url']."'/>";
