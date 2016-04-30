@@ -47,6 +47,8 @@ if(isset($_POST["submit"])) {
 
 
         if ($data1->num_rows > "0") {
+            
+            echo "alright up to here";
 
             $data1->bind_result($id);
 
