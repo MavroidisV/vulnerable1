@@ -38,7 +38,7 @@ if(isset($_SESSION['username']))
     {
 
         /* Bind the result to variables */
-        $data->bind_result($id);
+        $data->bind_result($searchID);
 
         $row=$data->fetch();
 
