@@ -82,7 +82,7 @@
                // $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
               //  if(mysqli_num_rows($commentresult)>1) {
 
-                    echo "<h2> Comments </h2>";
+                    
                    // while($commentRow = mysqli_fetch_assoc($commentresult)){
                         echo "<div class = 'comments'>";
                         echo "<h3>".$postDate."</h3>";
