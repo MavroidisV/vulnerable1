@@ -7,7 +7,7 @@ if(isset($_POST["submit"])) {
 
     $desc = $_POST["desc"];
     $photoID = $_POST["photoID"];
-    $name = $_SESSION["username"];
+    $name1 = $_SESSION["username"];
 
     // To protect from MySQL injection and XSS
     $desc = stripslashes($desc);
@@ -22,7 +22,7 @@ if(isset($_POST["submit"])) {
         echo "fail";
     }
 
-    if (!$data->bind_param('s', $name)) {
+    if (!$data->bind_param('s', $name1)) {
         echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
     }
 
@@ -48,16 +48,20 @@ if(isset($_POST["submit"])) {
         // $id = $row['userID'];
 
 
-        $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)")or die(mysqli_error($db));
-        $query->bind_param("sss",$desc,$id,$photoID);
-        $query->execute();
-        // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)") or die(mysqli_error($db));
+        if ($data->num_rows < "1") { //Uses the stored result and counts the rows.
 
-        if ($data) {
-            $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
+            $msg = "Sorry...This email already exists...";
         } else {
-            $msg = "You need to login first";
+            //echo $name." ".$email." ".$password;
+            $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)") or die(mysqli_error($db));
+            $query->bind_param("sss", $desc, $id, $photoID);
+            $query->execute();
+            if ($query) {
+                $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
+            }
+
         }
     }
 }
-?>
+    ?>
