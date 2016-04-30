@@ -55,6 +55,9 @@ if(isset($_POST["submit"])) {
             $searchRow = $data1->fetch();
             
             
+            echo $searchRow;
+            
+            
 
 
             //$searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
@@ -62,7 +65,7 @@ if(isset($_POST["submit"])) {
 
             //if(mysqli_num_rows($searchresult)>0){
             // while($searchRow = mysqli_fetch_assoc($searchresult)){
-            $line = "<p><a href='photo.php?id=" . $searchRow['$photoi'] . "'>" . $searchRow['title'] . "</a></p>";
+            $line = "<p><a href='photo.php?id=" . $searchRow['photoID'] . "'>" . $searchRow['title'] . "</a></p>";
             $resultText = $resultText . $line;
         }
 
