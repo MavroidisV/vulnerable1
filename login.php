@@ -25,40 +25,26 @@ error_reporting(E_ALL);
 			//Check username and password from database
 			if (!($data=$db->prepare("SELECT userID FROM users WHERE username=? and password=?;")))
 			{echo "fail";}
-			
-			//var_dump($data);
 	
 			if(!$data->bind_param('ss',$username1,$password )) {
 				echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
 			}
 			
 			
-			//Check username and password from database
-			//$data=$db->prepare=('SELECT userID FROM users WHERE username=? and password=?;');
-			
-			//$data->bind_param('ss',$username,$password );
 			if (!$data -> execute()){
 				echo "Execute failed: (" . $data->errno . ") " . $data->error;
 			}
-			//$data->bind_result($userID);
 
-			//$result=mysqli_query($db,$data);
 			$row=$data->fetch();
-			//$result=mysqli_query($db,$data);
-			//$row=mysqli_fetch_array($result,MYSQLI_ASSOC) ;
-			
-			//If username and password exist in our database then create a session.
-			//Otherwise echo error.
-			//if ( $data->rowCount()== 1 )
-			//if(mysqli_num_rows($row) == 1)
+
+					// Initializing Session
 			{
-				$_SESSION['username'] = $username1; // Initializing Session
-				header("location: photos.php"); // Redirecting To Other Page
+				$_SESSION['username'] = $username1;
+
+				// Redirecting To Other Page
+				header("location: photos.php");
 			}
-		//else
-			{
-			//	$error = "Incorrect username or password.";
-			}
+		
 
 		}
 	}
