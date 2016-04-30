@@ -23,7 +23,7 @@ if(isset($_POST["submit"]))
 
     $password = md5($password);
 
-
+    //prepared statement-bind parameters-execute-check for already existed email
     if (!($data=$db->prepare("SELECT email FROM users WHERE email= ? ;")))
     {echo "fail";}
 
