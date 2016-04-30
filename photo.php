@@ -34,7 +34,7 @@
             if ($data->num_rows >= "1")
             {
                 /* Bind the result to variables */
-                $data->bind_result($row['id'],$row['title'],$row['description'],$row['postDate'],$row['url'],$row['userID']);
+                $data->bind_result($id,$title,$description,$postDate,$url,$userID);
 
                 $row=$data->fetch();
 
