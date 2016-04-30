@@ -4,6 +4,13 @@ if(isset($_POST["submit"]))
 {
     $name = $_POST["username"];
 
+    // To protect from MySQL injection and XSS
+    $name = stripslashes($name);
+    $name = mysqli_real_escape_string($db, $name);
+    $name = htmlspecialchars($name);
+
+    $password = md5($password);
+
 
     //Check username from db
     if (!($data=$db->prepare("SELECT userID FROM users WHERE username=?;")))
