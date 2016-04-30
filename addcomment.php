@@ -1,4 +1,9 @@
 <?php
+//display error
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 include("connection.php"); //Establishing connection with our database
 
@@ -48,9 +53,9 @@ if(isset($_POST["submit"])) {
         // $id = $row['userID'];
 
         if ($data->num_rows >= "1"){
-        $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
-        $query->bind_param("ss",$desc,$photoID);
-        $query->execute();
+        $data = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)")or die(mysqli_error($db));
+        $data->bind_param("ss",$desc,$photoID);
+        $data->execute();
         // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
             
             $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
