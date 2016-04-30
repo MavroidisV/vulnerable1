@@ -31,7 +31,7 @@ if(isset($_POST["submit"]))
        $data->bind_result($userID);
         //$searchID = $row['userID'];
         
-        $searchSql="SELECT title, photoID FROM photos WHERE userID='$data'";
+        $searchSql="SELECT title, photoID FROM photos WHERE userID=''";
         $searchresult=mysqli_query($db,$searchSql);
 
         if(mysqli_num_rows($searchresult)>0){
