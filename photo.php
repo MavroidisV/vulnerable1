@@ -29,7 +29,11 @@
                 echo "Execute failed: (" . $data->errno . ") " . $data->error;
             }
 
-            $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+            //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+            
+            /* Bind results to variables */
+            $data->bind_result($photoID, $title, $description, $postDate, $url, $userID);
+
 
             //if ($data->num_rows = "1")
            // {
@@ -38,7 +42,7 @@
 
             /* fetch values */
             while ($data->fetch()) {
-                printf("%s %s\n", $lastName, $firstName);
+                printf("%s %s\n", $photoID, $url);
             }
 
             /* Close the statement */
