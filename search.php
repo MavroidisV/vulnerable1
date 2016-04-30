@@ -36,11 +36,7 @@ if(isset($_POST["submit"]))
 
        $row=$data->fetch();
 
-
-
        
-
-
 
        $searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
        $searchresult=mysqli_query($db,$searchSql);

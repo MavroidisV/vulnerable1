@@ -16,14 +16,36 @@
     <?php
         if(isset($_GET['id'])){
             $photoID = $_GET['id'];
-            $photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
-            $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
-            if(mysqli_num_rows($photoresult)==1){
-                $photoRow = mysqli_fetch_assoc($photoresult);
-                echo "<h1>".$photoRow['title']."</h1>";
-                echo "<h3>".$photoRow['postDate']."</h3>";
-                echo "<img src='".$photoRow['url']."'/>";
-                echo " <p>".$photoRow['description']."</p>";
+
+            //Check username from db
+            if (!($data=$db->prepare("SELECT * FROM photos WHERE photoID=?;")))
+            {echo "fail";}
+
+            if(!$data->bind_param('s',$photoID)) {
+                echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+            }
+
+            if (!$data -> execute()){
+                echo "Execute failed: (" . $data->errno . ") " . $data->error;
+            }
+
+            $data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
+
+            if ($data->num_rows == "1")
+            {
+                /* Bind the result to variables */
+                $data->bind_result($id);
+
+                $row=$data->fetch();
+
+                //$photoSql="SELECT * FROM photos WHERE photoID='$photoID'";
+           // $photoresult=mysqli_query($db,$photoSql) or die(mysqli_error($db));
+           // if(mysqli_num_rows($photoresult)==1){
+                //$photoRow = mysqli_fetch_assoc($photoresult);
+                echo "<h1>".$row['title']."</h1>";
+                echo "<h3>".$ow['postDate']."</h3>";
+                echo "<img src='".$row['url']."'/>";
+                echo " <p>".$row['description']."</p>";
 
 
                 $commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
