@@ -42,7 +42,12 @@
 
             /* fetch values */
             while ($data->fetch()) {
-                printf("%s %s\n", $photoID, $url);
+               // printf("%s %s\n", $photoID, $url);
+                echo "<h1>".$title."</h1>";
+                echo "<h3>".$postDate."</h3>";
+                echo "<img src='".$url."'/>";
+                echo " <p>".$description."</p>";
+
             }
 
             /* Close the statement */
