@@ -44,9 +44,10 @@ if(isset($_POST["submit"]))
     //$result=mysqli_query($db,$sql);
     //$row=mysqli_fetch_assoc($result);
     //if(mysqli_num_rows($result) == 1)
-    if ($data->num_rows >= "1")
-    {
+    if ($data->num_rows >= "1") echo "workds fine";}
+  /*  {
         $searchID = $row['userID'];
+        
         $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
         $searchresult=mysqli_query($db,$searchSql);
 
