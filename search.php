@@ -29,10 +29,9 @@ if(isset($_POST["submit"]))
     if ($data->num_rows >= "1")
    {
        $data->bind_result($userID);
-       echo $userID;
         //$searchID = $row['userID'];
         
-        $searchSql="SELECT title, photoID FROM photos WHERE userID='$searchID'";
+        $searchSql="SELECT title, photoID FROM photos WHERE userID='$data'";
         $searchresult=mysqli_query($db,$searchSql);
 
         if(mysqli_num_rows($searchresult)>0){
