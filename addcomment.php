@@ -54,11 +54,11 @@ if(isset($_POST["submit"])) {
             $msg = "Sorry...This email already exists...";
         } else {
             //echo $name." ".$email." ".$password;
-            $query = $db->prepare("INSERT INTO comments (description, userID,photoID) VALUES (?,?,?)") or die(mysqli_error($db));
-            $query->bind_param("sss", $desc, $id, $photoID);
+            $query = $db->prepare("INSERT INTO comments (description,photoID) VALUES (?,?)") or die(mysqli_error($db));
+            $query->bind_param("ss", $desc, $photoID);
             $query->execute();
             if ($query) {
-                $msg = "Thank You! you are now registered. click <a href='index.php'>here</a> to login";
+                $msg = "Thank You! you have submitted your comment succesfully";
             }
 
         }
