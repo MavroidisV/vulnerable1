@@ -54,7 +54,7 @@ if(isset($_POST["submit"])) {
 
             $searchRow = $data1->fetch();
             
-            echo $searchRow;
+            echo $data1;
 
 
             //$searchSql="SELECT title, photoID FROM photos WHERE userID='$id'";
