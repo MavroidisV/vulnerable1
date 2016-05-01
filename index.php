@@ -27,9 +27,9 @@
             <label>Password:</label><br>
             <input type="password" name="password" placeholder="password" />  <br><br>
             <label>Captcha:</label><br>
-            <p><img src="/captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
-            <input type="text" size="6" maxlength="5" name="captcha" value=""><br>
-                <small>copy the digits from the image into this box</small></p>
+            <p><img src="/captcha.php" width="120" height="30" border="1" alt="CAPTCHA">
+            <input type="text" size="6" maxlength="5" name="captcha" value=""></p><br>
+                <small>copy the digits from the image into this box</small>
             <input type="submit" name="submit" value="Login" />
         </form>
         <div class="error"><?php echo $error;?></div>
