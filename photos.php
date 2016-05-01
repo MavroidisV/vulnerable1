@@ -22,7 +22,7 @@ if( $_SESSION['last_activity'] +20 < time()){ session_destroy(); header("locatio
 else{ //if we haven't expired:
 	$_SESSION['last_activity'] = time(); //this was the moment of last activity.
 	echo $_SESSION['last_activity'];
-	echo time();
+	echo $_SESSION['expire_time'];
 }
 
 ?>
