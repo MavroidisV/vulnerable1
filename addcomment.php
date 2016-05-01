@@ -65,17 +65,9 @@ if (!$data -> execute()){
     echo "Execute failed: (" . $data->errno . ") " . $data->error;
 }
 
-//$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
-
-/* Bind results to variables */
-//$data->bind_result($commentID, $description, $postDate, $userID, $photoID);
-
-//echo "<h2> Comments </h2>";
-//while ($data->fetch()) {
 
 
-    //$addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
-   // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+    
     if ($data) {
         $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
 
