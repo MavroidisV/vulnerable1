@@ -66,12 +66,12 @@ if(isset($_POST["submit"])) {
       }
 
         //check if file exists
-    //if (file_exists($target_file)){echo "sorry file already exists";
-            //$uploadOk=0;}
+        // if (file_exists($target_file)){echo "sorry file already exists";
+        //$uploadOk=0;}
 
         //check file size
-   // if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
-            //$uploadOk=0;}
+            //if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
+                 //$uploadOk=0;}
 
         if ($uploadOk == 1) {
             if (!($data = $db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)"))) {
