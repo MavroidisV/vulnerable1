@@ -12,7 +12,7 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 	else {header("location: index.php");}
 
 
-
+//set time
 $_SESSION['logged_in'] = true; //set you've logged in
 $_SESSION['timeout'] = time(); //your last activity was now, having logged in.
 
