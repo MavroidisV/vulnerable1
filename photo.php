@@ -36,7 +36,7 @@ else {$_SESSION['timeout']=time();}
         if(isset($_GET['id'])) {
             $photoID = $_GET['id'];
             
-            echo $photoID;
+            
 
             //Check username from db
             if (!($data = $db->prepare("SELECT photoID, title, description, postDate, url, userID FROM photos WHERE photoID=?;"))) {
@@ -99,7 +99,7 @@ else {$_SESSION['timeout']=time();}
                 echo "<p>" . $description . "</p>";
 
                 echo "</div>";
-            }
+            } echo $photoID;
 
 
             echo "<a href='addcommentform.php?id=". $photoID ."'> Add Comment</a><br>";
