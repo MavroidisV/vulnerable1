@@ -72,6 +72,7 @@ if(isset($_POST["submit"])) {
         //check file size
             //if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
                  //$uploadOk=0;}
+    //check if image file is actual image or fake
     $check=getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check!==false){echo "file is an image-" .$check["mime"].".";
     $uploadOk=1;}
