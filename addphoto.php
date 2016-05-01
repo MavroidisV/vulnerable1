@@ -52,8 +52,21 @@ if(isset($_POST["submit"]))
     if ($data->num_rows == "1") {
         //$timestamp = time();
         //$target_file = $target_file.$timestamp;
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+       // if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             //$id = $row['userID'];
+            // this code actually checks the mime type of the file being uploaded
+            $finfo=new finfo(FILEINFO_MIME_TYPE);
+            $fileContents=file_get_contents($FILES['some_name']['tmp_name']);
+            $mimeType=$finfo->buffer($fileContents);
+            
+            //check if image file is actually image or fake image
+            $check=getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if($check!==false){echo "file is an image-".$check["mime"].".";
+                $uploadOk=1; }
+             else {echo "file is not an image.";
+             $uploadOk=0;}
+
+
 
             if (!($data=$db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)")))
             {echo "fail";}
@@ -83,6 +96,6 @@ if(isset($_POST["submit"]))
     else{
         $msg = "You need to login first";
     }
-}
+//}
 
 ?>
