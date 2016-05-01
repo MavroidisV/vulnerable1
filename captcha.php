@@ -33,4 +33,4 @@ $_SESSION['digit'] = $digit;
 header('Content-type: image/png');
 imagepng($image);
 imagedestroy($image);
-?>
+?> 
