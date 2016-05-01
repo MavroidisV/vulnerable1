@@ -49,7 +49,7 @@ error_reporting(E_ALL);
 			if (!$data -> execute()){
 				echo "Execute failed: (" . $data->errno . ") " . $data->error;
 			}
-
+ 
 			$row=$data->fetch();
 
 					// Initializing Session
