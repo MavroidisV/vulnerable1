@@ -14,9 +14,12 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 
 $_SESSION['logged_in'] = true; //set you've logged in
 $_SESSION['timeout'] = time() + 60; //your last activity was now, having logged in.
-//$_SESSION['expire_time'] = $_SESSION['last_activity'] + 30;
-echo $_SESSION['timeout'];
-echo time();
+
+//echo $_SESSION['timeout'];
+//echo time();
+if( $_SESSION['timeout'] < time()){ session_destroy(); header("location: index.php");}
+
+else {$_SESSION['timeout']=time(); }
 
 
 
