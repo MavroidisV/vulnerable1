@@ -5,7 +5,7 @@
 
 $ip = getenv('REMOTE_ADDR');
 echo $ip;
-$_SESSION['IP']== $ip;
+$_SESSION['IP'];
 echo $_SESSION['IP'];
 
 //if ($ip == $_SESSION['ip']){
