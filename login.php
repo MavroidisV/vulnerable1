@@ -6,8 +6,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 	session_start();
-	//include("connection.php"); //Establishing connection with our database
-	include ("captcha.php");
+	include("connection.php"); //Establishing connection with our database
+	//include ("captcha.php");
 	$error = ""; //Variable for storing our errors.
 	if(isset($_POST["submit"]))
 	{
