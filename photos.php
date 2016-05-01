@@ -6,11 +6,11 @@
 $ip = getenv('REMOTE_ADDR');
 echo $ip;
 
-if ($ip == $_SESSION['ip']){
-	echo"all good";
+if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 }
-//echo "you are eligible user";}
-else {header("location: index.php");}
+
+	else {header("location: index.php");}
+
 ?>
 
 
