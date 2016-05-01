@@ -57,13 +57,12 @@ if(isset($_POST["submit"])) {
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $fileContents = file_get_contents($FILES['some_name']['tmp_name']);
         $mimeType = $finfo->buffer($fileContents);
-    }
-    
-    
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
-           $uploadOk = 0;
-      }
+
+        // Check the fallow for certain file formats
+        //if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
+            //echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
+           // $uploadOk = 0;
+      //  }
 
         //check if file exists
         // if (file_exists($target_file)){echo "sorry file already exists";
@@ -99,7 +98,7 @@ if(isset($_POST["submit"])) {
         //echo $name." ".$email." ".$password;
 
         // }
-    
+    }
 
 //}
 }
