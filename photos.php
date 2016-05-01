@@ -5,8 +5,9 @@
 
 $ip = getenv('REMOTE_ADDR');
 echo $ip;
-if ($ip !== SESSION_['ip'])
-echo "sorry you are not an eligible user"
+if ($ip == $_SESSION['ip']){
+echo "you are eligible user";}
+else {echo "no mate sorry";}
 ?>
 
 
