@@ -20,11 +20,8 @@ if(isset($_GET['id']))
     if (!$data -> execute()){
         echo "Execute failed: (" . $data->errno . ") " . $data->error;
     }
-
-    //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
-
-    /* Bind results to variables */
-    $data->bind_result($commentID, $description, $postDate, $userID, $photoID);
+    
+   
     
     if ($data) {
         header("Location: photos.php");
