@@ -1,6 +1,14 @@
 <?php
 include("check.php");
 include("addcomment.php");
+
+$ip = getenv('REMOTE_ADDR');
+//check ip
+//echo $ip;
+
+if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
+}
+else {header("location: index.php");}
 ?>
 
 <!doctype html>
