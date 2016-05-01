@@ -10,14 +10,40 @@ if(isset($_POST["submit"]))
     $url = "test";
     $name = $_SESSION["username"];
 
+    // To protect from MySQL injection and XSS
+    $title = stripslashes($title);
+    $desc = stripslashes($desc);
+
+    $desc = mysqli_real_escape_string($db, $desc);
+    $title = mysqli_real_escape_string($db, $title);
+    $desc = htmlspecialchars($desc);
+    $title = htmlspecialchars($title);
+
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
     $uploadOk = 1;
 
-    $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+    if (!($data = $db->prepare("SELECT userID FROM users WHERE username=?;"))) {
+        echo "fail";
+    }
+
+    if (!$data->bind_param('s', $name)) {
+        echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+    }
+
+
+    if (!$data->execute()) {
+        echo "Execute failed: (" . $data->errno . ") " . $data->error;
+    }
+
+    $data->store_result();
+
+   // $sql="SELECT userID FROM users WHERE username='$name'";
+   // $result=mysqli_query($db,$sql);
+   // $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $data->bind_result($id);
+    $row = $data->fetch();
 
     if(mysqli_num_rows($result) == 1) {
         //$timestamp = time();
