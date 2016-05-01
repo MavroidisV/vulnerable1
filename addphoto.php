@@ -45,7 +45,7 @@ if(isset($_POST["submit"]))
     $data->bind_result($id);
     $row = $data->fetch();
 
-    if(mysqli_num_rows($result) == 1) {
+    if ($data->num_rows == "1") {
         //$timestamp = time();
         //$target_file = $target_file.$timestamp;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
