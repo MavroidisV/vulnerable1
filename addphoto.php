@@ -58,7 +58,7 @@ if(isset($_POST["submit"]))
             if (!($data=$db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)")))
             {echo "fail";}
 
-            if(!$data->bind_param('sssss',$title,$desc,$date,$url,$id)) {
+            if(!$data->bind_param('sssss',$title,$desc,$date,$target_file,$id)) {
                 echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
             }
 
