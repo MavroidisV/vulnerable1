@@ -6,7 +6,7 @@ if(isset($_SESSION['username']))
 
     
 
-    //Check username from db
+    //Check userid from db
     if (!($data=$db->prepare("SELECT userID FROM users WHERE username=?;")))
     {echo "fail";}
 
@@ -24,16 +24,7 @@ if(isset($_SESSION['username']))
 
 
     if ($data->num_rows == "1")
-    
-    
-    
-
-   /* $sql="SELECT userID FROM users WHERE username='$name'";
-    $result=mysqli_query($db,$sql);
-    $row=mysqli_fetch_assoc($result);
-    if(mysqli_num_rows($result) == 1)
-   
-   */
+        
    
     {
 

@@ -1,6 +1,4 @@
 <?PHP
-// Adapted for The Art of Web: www.the-art-of-web.com
-// Please acknowledge use of this code by including this header.
 
 // initialise image with dimensions of 120 x 30 pixels
 $image = @imagecreatetruecolor(120, 30) or die("Cannot Initialize new GD image stream");
