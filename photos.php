@@ -14,7 +14,9 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 
 $_SESSION['logged_in'] = true; //set you've logged in
 $_SESSION['last_activity'] = time(); //your last activity was now, having logged in.
-$_SESSION['expire_time'] = 1;
+$_SESSION['expire_time'] = $_SESSION['last_activity'] + 1;
+echo $_SESSION['last_activity'];
+echo $_SESSION['expire_time'];
 
 
 
