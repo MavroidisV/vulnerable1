@@ -49,7 +49,7 @@ if(isset($_SESSION['username']))
         if(mysqli_num_rows($searchresult)>0)
    {
             while($searchRow = mysqli_fetch_assoc($searchresult)){
-                $line = "<p><a href='photo.php?id=".$searchRow['photoID']."'>".$searchRow['title']."</a><p><img src='".$searchRow['url']."' style='width:100px;height:100px;'></p>";
+                $line = "<p><a href='photo.php?id=".$searchRow['photoID']."'>".$searchRow['title']."</a><br><img src='".$searchRow['url']."' style='width:100px;height:100px;'><p></p>";
                 $resultText = $resultText.$line;
             }
         }
