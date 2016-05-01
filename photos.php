@@ -4,7 +4,8 @@
 
 
 $ip = getenv('REMOTE_ADDR');
-echo $ip;
+//check ip
+//echo $ip;
 
 if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 }
