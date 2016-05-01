@@ -30,7 +30,9 @@ error_reporting(E_ALL);
 			$password = htmlspecialchars($password);
 
 			$password = md5($password);
-			
+
+			if($_POST['captcha'] != $_SESSION['digit']) die("Sorry, the CAPTCHA code entered was incorrect!");
+			session_destroy();
 
 
 
