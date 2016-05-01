@@ -51,7 +51,7 @@ if(isset($_POST["submit"])) {
     //echo $name." ".$email." ".$password;
     // $id = $row['userID'];
 
-    echo $id;
+   // echo $id;
 
 //Check username from db
 if (!($data=$db->prepare("INSERT INTO comments (description, postDate,photoID,userID) VALUES (?,?,?,?)")))
@@ -67,7 +67,7 @@ if (!$data -> execute()){
 
 
 
-    
+
     if ($data) {
         $msg = "Thank You! comment added. click <a href='photo.php?id=" . $photoID . "'>here</a> to go back";
 

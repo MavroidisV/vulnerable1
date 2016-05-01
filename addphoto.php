@@ -2,6 +2,10 @@
 session_start();
 include("connection.php"); //Establishing connection with our database
 
+//set default time zone
+date_default_timezone_set('UTC');
+$date = date('Y-m-d');
+
 $msg = ""; //Variable for storing our errors.
 if(isset($_POST["submit"]))
 {
@@ -50,9 +54,22 @@ if(isset($_POST["submit"]))
         //$target_file = $target_file.$timestamp;
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             //$id = $row['userID'];
-            $addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
-            $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-            if ($query) {
+
+            if (!($data=$db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)")))
+            {echo "fail";}
+
+            if(!$data->bind_param('sssss',$title,$desc,$date,$url,$id)) {
+                echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
+            }
+
+            if (!$data -> execute()){
+                echo "Execute failed: (" . $data->errno . ") " . $data->error;
+            }
+
+
+            //$addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
+           // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+            if ($data) {
                 $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
             }
 
