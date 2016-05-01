@@ -1,6 +1,10 @@
 <?php
 	include("check.php");
 	include("userphotos.php");
+
+
+$ip = getenv('REMOTE_ADDR');
+echo $ip
 ?>
 
 
