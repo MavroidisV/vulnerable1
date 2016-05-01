@@ -72,7 +72,7 @@ else {$_SESSION['timeout']=time();}
 
 
             //Check username from db
-            if (!($data = $db->prepare("SELECT commentID,description,postDate,userID,photoID FROM comments WHERE photoID=?;"))) {
+            if (!($data = $db->prepare("SELECT commentID,description,postDate,userID FROM comments WHERE photoID=?;"))) {
                 echo "fail";
             }
 
@@ -87,7 +87,7 @@ else {$_SESSION['timeout']=time();}
             //$data->store_result(); //store_result() "binds" the last given answer to the statement-object for... reasons. Now we can use it
 
             /* Bind results to variables */
-            $data->bind_result($commentID, $description, $postDate, $userID, $photoID);
+            $data->bind_result($commentID, $description, $postDate, $userID);
 
             echo "<h2> Comments </h2>";
             while ($data->fetch()) {
