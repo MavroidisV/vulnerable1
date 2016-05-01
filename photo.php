@@ -98,10 +98,10 @@ else {$_SESSION['timeout']=time();}
                     }
 
                 }
-                echo "<a href='addcommentform.php?id=".$photoID."'> Add Comment</a><br>";
+    echo "<a href='addcommentform.php?id=".$photoID."'> Add Comment</a><br>";
 
-                if($adminuser){
-                    echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
+    if($adminuser){
+        echo "<div class='error'><a href='removephoto.php?id=".$photoID."'> Delete Photo</a></div>";
                 }
 
          
