@@ -2,13 +2,7 @@
 	include("check.php");
 	include("userphotos.php");
 ?>
-<?php
-// Example use of getenv()
-$ip = getenv('REMOTE_ADDR');
-SESSION_['IP'];
 
-echo $ip
-	?>
 
 <!doctype html>
 <html>
