@@ -25,11 +25,11 @@
             <label>Username:</label><br>
             <input type="text" name="username" placeholder="username" /><br><br>
             <label>Password:</label><br>
-            <input type="password" name="password" placeholder="password" />  <br><br>
+            <input type="password" name="password" placeholder="password" />  <br><br><br>
             <label>Captcha:</label><br>
-            <p><img src="/captcha.php" width="120" height="30" border="1" alt="CAPTCHA">
-            <input type="text" size="6" maxlength="5" name="captcha" value=""></p><br>
-                <small>copy the digits from the image into this box</small>
+            <p><img src="/captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
+            <p><input type="text" size="6" maxlength="5" name="captcha" value=""></p><br>
+                <small>copy the digits from the image into this box</small><br>
             <input type="submit" name="submit" value="Login" />
         </form>
         <div class="error"><?php echo $error;?></div>
