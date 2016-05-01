@@ -7,7 +7,7 @@ $ip = getenv('REMOTE_ADDR');
 echo $ip;
 
 if ($ip == $_SESSION['ip']){
-	header("location: photos.php");
+	header("location: login.php");
 }
 //echo "you are eligible user";}
 else {header("location: photos.php");}
