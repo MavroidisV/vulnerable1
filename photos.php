@@ -17,11 +17,8 @@ $_SESSION['expire_time'] = 1*60;
 
 //session expiration
 
-if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we expired?
-//redirect to logout.php
-	session.destroy();
-	header('Location: index.php');
-}
+if( $_SESSION['last_activity'] +20 < time()){ session_destroy(); header("location: index.php");}
+
 else{ //if we haven't expired:
 	$_SESSION['last_activity'] = time(); //this was the moment of last activity.
 	echo $_SESSION['last_activity'];
