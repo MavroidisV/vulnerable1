@@ -57,20 +57,21 @@ if(isset($_POST["submit"])) {
         $finfo = new finfo(FILEINFO_MIME_TYPE);
         $fileContents = file_get_contents($FILES['some_name']['tmp_name']);
         $mimeType = $finfo->buffer($fileContents);
-
-        // Check the fallow for certain file formats
-       // if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
-            //echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
-           // $uploadOk = 0;
-      //  }
+    }
+    
+    
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
+        echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
+           $uploadOk = 0;
+      }
 
         //check if file exists
         // if (file_exists($target_file)){echo "sorry file already exists";
         //$uploadOk=0;}
 
         //check file size
-            if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
-                 $uploadOk=0;}
+            //if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
+                 //$uploadOk=0;}
 
         if ($uploadOk == 1) {
             if (!($data = $db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)"))) {
@@ -98,7 +99,7 @@ if(isset($_POST["submit"])) {
         //echo $name." ".$email." ".$password;
 
         // }
-    }
+    
 
 //}
 }
