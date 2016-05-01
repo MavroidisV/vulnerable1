@@ -5,7 +5,7 @@
 <?php
 // Example use of getenv()
 $ip = getenv('REMOTE_ADDR');
-SESSION_['IP']==$IP;
+SESSION_['IP'];
 
 echo $ip
 	?>
