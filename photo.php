@@ -11,20 +11,7 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 else {header("location: index.php");}
 
 
-$_SESSION['logged_in'] = true; //set you've logged in
-$_SESSION['last_activity'] = time(); //your last activity was now, having logged in.
-$_SESSION['expire_time'] = 60;
 
-//session expiration
-
-if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we expired?
-//redirect to logout.php
-    header('Location: index.php');
-}
-else{ //if we haven't expired:
-    $_SESSION['last_activity'] = time(); //this was the moment of last activity.
-    echo $_SESSION['last_activity'];
-}
 ?>
 
 <!doctype html>
