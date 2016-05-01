@@ -10,7 +10,7 @@ if(isset($_GET['id']))
 
 
     //Check username from db
-    if (!($data=$db->prepare("DELETE FROM photos FROM photos WHERE photoID=?;")))
+    if (!($data=$db->prepare("DELETE FROM photos WHERE photoID=?;")))
     {echo "fail";}
 
     if(!$data->bind_param('s',$photoID)) {
