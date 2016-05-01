@@ -59,18 +59,20 @@ if(isset($_POST["submit"]))
         $fileContents = file_get_contents($FILES['some_name']['tmp_name']);
         $mimeType = $finfo->buffer($fileContents);
 
-        //check if image file is actually image or fake image
-        /*$check=getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check!==false){echo "file is an image-".$check["mime"].".";
-            $uploadOk=1; }
-         else {echo "file is not an image.";
-         $uploadOk=0;}*/
+        // Check the fallow for certain file formats
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
             echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
             $uploadOk = 0;
         }
 
-
+        //check if file exists
+        if (file_exists($target_file)){echo "sorry file already exists";
+        $uploadOk=0;}
+        
+        //check file size
+        if ($_FILES["fileToUpload"]["size"]>500000){echo "sorry your file is too large";
+        $uploadOk=0;}
+        
         if ($uploadOk == 1) {
             if (!($data = $db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)"))) {
                 echo "fail";
