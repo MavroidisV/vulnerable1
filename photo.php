@@ -99,7 +99,7 @@ else {$_SESSION['timeout']=time();}
                 echo "<p>" . $description . "</p>";
 
                 echo "</div>";
-            } echo $photoID;
+            } 
 
 
             echo "<a href='addcommentform.php?id=". $photoID ."'> Add Comment</a><br>";
