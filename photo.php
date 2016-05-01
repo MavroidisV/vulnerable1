@@ -65,25 +65,11 @@
 
     /* Bind results to variables */
     $data->bind_result($commentID, $description, $postDate, $userID, $photoID);
-   // if ($data->num_rows >= "1"){
-    // {
-    /* Bind the result to variables */
-    //$data->bind_result($id,$title,$description,$postDate,$url,$userID);
-
-    /* fetch values */
+ 
             echo "<h2> Comments </h2>";
     while ($data->fetch()) {
 
-
-
-
-
-                //$commentSql="SELECT * FROM comments WHERE photoID='$photoID'";
-               // $commentresult=mysqli_query($db,$commentSql) or die(mysqli_error($db));
-              //  if(mysqli_num_rows($commentresult)>1) {
-
-                    
-                   // while($commentRow = mysqli_fetch_assoc($commentresult)){
+        
                         echo "<div class = 'comments'>";
                         echo "<h3>".$postDate."</h3>";
                         echo "<p>".$commentID."</p>";
