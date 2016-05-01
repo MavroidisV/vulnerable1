@@ -65,28 +65,30 @@ if(isset($_POST["submit"]))
             $uploadOk=1; }
          else {echo "file is not an image.";
          $uploadOk=0;}*/
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif")
-        {echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
-                $uploadOk=0;}
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
+            echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
+            $uploadOk = 0;
+        }
 
 
+        if ($uploadOk = 1) {
+            if (!($data = $db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)"))) {
+                echo "fail";
+            }
 
-            if (!($data=$db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)")))
-            {echo "fail";}
-
-            if(!$data->bind_param('sssss',$title,$desc,$date,$target_file,$id)) {
+            if (!$data->bind_param('sssss', $title, $desc, $date, $target_file, $id)) {
                 echo "binding parameters failed: (" . $data->errno . ")" . $data->error;
             }
 
-            if (!$data -> execute()){
+            if (!$data->execute()) {
                 echo "Execute failed: (" . $data->errno . ") " . $data->error;
             }
 
 
             //$addsql = "INSERT INTO photos (title, description, postDate, url, userID) VALUES ('$title','$desc',now(),'$target_file','$id')";
-           // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+            // $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
             if ($data) {
-                $msg = "Thank You! The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded. click <a href='photos.php'>here</a> to go back";
+                $msg = "Thank You! The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded. click <a href='photos.php'>here</a> to go back";
             }
 
         } else {
@@ -94,11 +96,9 @@ if(isset($_POST["submit"]))
         }
         //echo $name." ".$email." ".$password;
 
-
     }
-    else{
-        $msg = "You need to login first";
     }
+   
 //}
 
 ?>
