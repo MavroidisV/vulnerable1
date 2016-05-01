@@ -6,9 +6,16 @@ $ip = getenv('REMOTE_ADDR');
 //check ip
 //echo $ip;
 
+
+//ip binding= if its the same ok(session initiated ip vs right now! if its not redirect
 if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 }
 else {header("location: index.php");}
+
+
+if( $_SESSION['timeout'] +60 < time()){ session_destroy(); header("location: index.php");}
+
+else {$_SESSION['timeout']=time();}
 
 
 
