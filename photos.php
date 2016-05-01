@@ -4,7 +4,9 @@
 
 
 $ip = getenv('REMOTE_ADDR');
-echo $ip
+echo $ip;
+if ($ip !== $_SESSION['ip'])
+echo "sorry you are not an eligible user"
 ?>
 
 
