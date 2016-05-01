@@ -1,7 +1,7 @@
 <?php
 	include("check.php");
     include("connection.php");
-
+//ip checking
 $ip = getenv('REMOTE_ADDR');
 //check ip
 //echo $ip;
@@ -9,6 +9,16 @@ $ip = getenv('REMOTE_ADDR');
 if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 }
 else {header("location: index.php");}
+
+//session expiration
+
+if($_SESSION['timeout'] + 60 <time()){
+    //session timed out
+    session.destroy();
+    header("Location: index.php");
+} else{$_SESSION['timeout']= time();}
+//session ok reset time
+
 ?>
 
 <!doctype html>
