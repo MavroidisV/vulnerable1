@@ -35,6 +35,8 @@ else {$_SESSION['timeout']=time();}
     <?php
         if(isset($_GET['id'])) {
             $photoID = $_GET['id'];
+            
+            echo $photoID;
 
             //Check username from db
             if (!($data = $db->prepare("SELECT photoID, title, description, postDate, url, userID FROM photos WHERE photoID=?;"))) {
