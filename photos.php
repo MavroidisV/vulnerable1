@@ -9,7 +9,6 @@ $ip = getenv('REMOTE_ADDR');
 
 if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 }
-
 	else {header("location: index.php");}
 
 ?>
@@ -29,8 +28,8 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 
 <div id="photolist">
 	<?php echo $resultText;?>
-</div>
-<a href='addphotoform.php'> Add New Photo </a>;
+</div><br>
+<a href='addphotoform.php'> Add New Photo </a>
 
 </body>
 </html>
