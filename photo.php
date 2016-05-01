@@ -23,6 +23,7 @@ if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we e
 }
 else{ //if we haven't expired:
     $_SESSION['last_activity'] = time(); //this was the moment of last activity.
+    echo $_SESSION['last_activity'];
 }
 ?>
 
