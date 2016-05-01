@@ -7,7 +7,7 @@ if(isset($_GET['id']))
 {
     $photoID = $_GET['id'];
 
-
+echo $photoID;
 
     //Check username from db
     if (!($data=$db->prepare("DELETE FROM photos WHERE photoID=?;")))
