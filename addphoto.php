@@ -59,10 +59,10 @@ if(isset($_POST["submit"])) {
         $mimeType = $finfo->buffer($fileContents);
 
         // Check the fallow for certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
-            echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
-            $uploadOk = 0;
-        }
+       // if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" & $imageFileType != "gif") {
+            //echo "Sorry, only JPG, JPEG,PNG and GIF  files are allowed.";
+           // $uploadOk = 0;
+      //  }
 
         //check if file exists
         // if (file_exists($target_file)){echo "sorry file already exists";
