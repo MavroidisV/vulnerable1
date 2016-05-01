@@ -9,7 +9,7 @@ if(isset($_GET['id']))
 
 echo $photoID;
 
-    //Check username from db
+    //prepared statement delete photo
     if (!($data=$db->prepare("DELETE FROM photos WHERE photoID=?;")))
     {echo "fail";}
 

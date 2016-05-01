@@ -3,9 +3,6 @@
     include("connection.php");
 //ip checking
 $ip = getenv('REMOTE_ADDR');
-//check ip
-//echo $ip;
-
 
 //ip binding= if its the same ok(session initiated ip vs right now! if its not redirect
 if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
