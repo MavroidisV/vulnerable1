@@ -21,7 +21,9 @@ if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) { //have we e
 //redirect to logout.php
     header('Location: index.php');
 }
-
+else{ //if we haven't expired:
+    $_SESSION['last_activity'] = time(); //this was the moment of last activity.
+}
 ?>
 
 <!doctype html>
