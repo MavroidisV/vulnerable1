@@ -71,7 +71,7 @@ if(isset($_POST["submit"]))
         }
 
 
-        if ($uploadOk = 1) {
+        if ($uploadOk == 1) {
             if (!($data = $db->prepare("INSERT INTO photos (title,description, postDate,url,userID) VALUES (?,?,?,?,?)"))) {
                 echo "fail";
             }
