@@ -11,12 +11,9 @@ if ($ip == $_SESSION['ip']){ //echo "you are eligible user";
 else {header("location: index.php");}
 
 
-if( $_SESSION['last_activity'] > time() +60 ) { //have we expired?
-	//redirect to logout.php
-	header('Location: index.php'); //change yoursite.com to the name of you site!!
-} else{ //if we haven't expired:
-	$_SESSION['last_activity'] = time(); //this was the moment of last activity.
-}
+if( $_SESSION['timeout'] < time()){ session_destroy(); header("location: index.php");}
+
+else {$_SESSION['timeout']=time(); }
 
 
 
